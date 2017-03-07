@@ -2,6 +2,7 @@ package info.mysuite.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import java.io.IOException;
 /**
  * Created by anselmkim on 2017. 3. 7..
  */
+@Component
 public class AuthSeuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
 
     @Override

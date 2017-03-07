@@ -2,6 +2,7 @@ package info.mysuite.security;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import java.io.PrintWriter;
 /**
  * Created by anselmkim on 2017. 3. 7..
  */
+@Component
 public class AuthFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     @Override
