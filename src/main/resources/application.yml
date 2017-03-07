@@ -9,3 +9,5 @@ spring:
 mybatis:
   mapper-locations: mapper/**/*.xml
   type-aliases-package: info.mysuite.domain
+#  config-location: mybatis/Mybatis.xml
+  ## 별도의 마이바티스 셋팅을 하려면 application.yml에 Mybatis.xml의 경로를 아래와 같이 선언하고 해당 파일을 추가해서 설정을 작성하면 된다
