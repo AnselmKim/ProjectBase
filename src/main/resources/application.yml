@@ -6,3 +6,6 @@ spring:
     url: jdbc:mysql://192.168.6.181:3306/exam
     username: root
     password: test
+mybatis:
+  mapper-locations: mapper/**/*.xml
+  type-aliases-package: info.mysuite.domain

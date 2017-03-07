@@ -10,6 +10,5 @@ import org.apache.ibatis.annotations.Select;
  */
 @Mapper
 public interface TestMapper {
-    @Select("select * from home where name = #{name}")
-    public Test selectTest(@Param("name") String name);
+    Test selectTest(@Param("name") String name);
 }
