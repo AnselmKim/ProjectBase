@@ -13,4 +13,8 @@ import java.util.List;
 public interface UserMapper {
     User getUser(String username);
     List<GrantedAuthority> getAuthority(String username);
+    void createUser(User user);
+    void createAuthority(User user);
+    void deleteUser(String username);
+    void deleteAuthority(String username);
 }
