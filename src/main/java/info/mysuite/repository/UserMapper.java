@@ -2,6 +2,7 @@ package info.mysuite.repository;
 
 import info.mysuite.domain.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.util.List;
 
@@ -11,5 +12,5 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
     User getUser(String username);
-    List<String> getAuthority(String username);
+    List<GrantedAuthority> getAuthority(String username);
 }
