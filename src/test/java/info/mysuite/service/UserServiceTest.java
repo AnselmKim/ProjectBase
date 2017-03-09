@@ -37,20 +37,20 @@ public class UserServiceTest {
     @Before
     public void setUp() throws Exception {
         user = new User();
-        user.setUsername("test");
-        user.setPassword("test1");
+        user.setUsername("user");
+        user.setPassword("1234");
         user.setAccountNonExpired(true);
         user.setAccountNonLocked(true);
-        user.setName("test");
+        user.setName("user");
         user.setCredentialsNonExpired(true);
         user.setEnabled(true);
         user.setAuthorities(AuthorityUtils.createAuthorityList("USER"));
     }
 
-    @After
-    public void tearDown() throws Exception {
-        userService.deleteUser(user.getUsername());
-    }
+//    @After
+//    public void tearDown() throws Exception {
+//        userService.deleteUser(user.getUsername());
+//    }
 
     @Test
     public void createUserTest() throws Exception {
@@ -59,7 +59,7 @@ public class UserServiceTest {
         assertEquals("username is not match!", user.getUsername(), userInfo.getUsername());
 
         PasswordEncoder passwordEncoder = userService.passwordEncoder();
-        assertThat(passwordEncoder.matches("test1", user.getPassword()), is(true));
+        assertThat(passwordEncoder.matches("1234", user.getPassword()), is(true));
 
         user.getAuthorities().forEach(authority ->
                 assertThat((Collection<GrantedAuthority>) userInfo.getAuthorities(),hasItem(new SimpleGrantedAuthority(authority.getAuthority())))
