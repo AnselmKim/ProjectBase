@@ -1,6 +1,7 @@
 package info.mysuite.repository;
 
 import info.mysuite.domain.User;
+import info.mysuite.security.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,18 +26,21 @@ public class UserMapperTest {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private UserService userService;
+
     @Test
     public void getUserTest() throws Exception {
-        User user = userMapper.getUser("cusonar");
-        assertThat("cusonar", is(user.getUsername()));
-        assertThat("YCU", is(user.getName()));
-        assertThat("1234", is(user.getPassword()));
+        User user = userMapper.getUser("admin");
+        assertThat("admin", is(user.getUsername()));
+        assertThat("admin", is(user.getName()));
+        assertThat("1234", userService.passwordEncoder().matches("1234", user.getPassword()), is(true));
     }
 
     @Test
     public void readAuthorityTest() {
 
-        List<GrantedAuthority> authorities = userMapper.getAuthority("cusonar");
+        List<GrantedAuthority> authorities = userMapper.getAuthority("admin");
         Iterator<GrantedAuthority> it = authorities.iterator();
 
         it.forEachRemaining(grantedAuthority ->
