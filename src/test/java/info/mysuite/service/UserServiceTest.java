@@ -47,10 +47,10 @@ public class UserServiceTest {
         user.setAuthorities(AuthorityUtils.createAuthorityList("USER"));
     }
 
-//    @After
-//    public void tearDown() throws Exception {
-//        userService.deleteUser(user.getUsername());
-//    }
+    @After
+    public void tearDown() throws Exception {
+        userService.deleteUser(user.getUsername());
+    }
 
     @Test
     public void createUserTest() throws Exception {
