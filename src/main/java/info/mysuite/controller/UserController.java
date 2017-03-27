@@ -45,4 +45,9 @@ public class UserController {
         User user = userService.getUser(username);
         return new AuthenticationToken(user.getName(), user.getAuthorities(), session.getId());
     }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public User getUserInfo() {
+        return userService.getUser("admin");
+    }
 }

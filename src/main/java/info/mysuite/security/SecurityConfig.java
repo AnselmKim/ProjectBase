@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.session.web.http.HeaderHttpSessionStrategy;
 import org.springframework.session.web.http.HttpSessionStrategy;
 
@@ -29,10 +30,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.
-                csrf().disable()
+                csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and()
                 .authorizeRequests()
+                .antMatchers("/").permitAll()
                 .antMatchers("/user/login").permitAll()
                 .antMatchers("/user").hasAuthority("USER")
                 .antMatchers("/admin").hasAuthority("ADMIN")
