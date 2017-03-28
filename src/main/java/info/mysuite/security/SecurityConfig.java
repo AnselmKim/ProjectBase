@@ -35,11 +35,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/*").permitAll()
                 .antMatchers("/user/login").permitAll()
-                .antMatchers("/user").hasAuthority("USER")
-                .antMatchers("/admin").hasAuthority("ADMIN")
-                .anyRequest().authenticated()
+//                .antMatchers("/user").hasAuthority("USER")
+//                .antMatchers("/admin/**").hasAuthority("ADMIN")
+//                .anyRequest().authenticated()
                 .and()
                 .logout();
     }
@@ -54,5 +54,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public HttpSessionStrategy httpSessionStrategy() {
         return new HeaderHttpSessionStrategy();
     }
-
 }
